@@ -5,8 +5,8 @@
   </head>
 
   <body>
-      message: <input type = "text" name ='input'><br>
-      <button id="messageSend">ajaxsend</button><br>
-      result: <input id = 'result' type="text" name='result' value="이건 value" disabled><br>
+      <textarea id='chatArea' rows='15' cols='50' readonly style="resize: none;" onfocus='this.value = this.value;'></textarea><br>
+      message: <input type = "text" name ='input'>
+      <button id="messageSend">Send</button><br>
   </body>
 </html>
