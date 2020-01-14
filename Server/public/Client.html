@@ -1,15 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
-      <meta http-equiv="Content-Security-Policy" content="img-src 'self'; script-src 'self'; ">
-      <script type="text/javascript" src="chatclient.js"></script>  
-        </head>
+<head>
+	<meta charset="utf-8">
+	<title>Chatbot</title>
+	<link rel="stylesheet" type="text/css" href="css/client.css">
+    <script type="text/javascript" src="chatclient.js"></script>
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script> 
+    <script>
+    	var i = 0;
+		var max = $("#chatArea").height();
 
-  <body>
-    <div id = 'text'>
-      <textarea id='chatArea' rows='15' cols='50' readonly style="resize: none;"></textarea><br>
+		setInterval(
+			function(){ 
+   		 		i += 1;
+
+  				var height = $("#chatArea").height();
+
+   				if(height > max) {
+       			$("#chatArea").scrollTop(height);
+  				}
+
+			},
+		500);
+    </script> 
+</head>
+
+<body>
+  <div id="box">
+	  <div id="text" class="chat">
+   		<span class="boxMe"></span>
+   		<span class="boxBot"></span>
     </div>
-      message: <input type = "text" name ='input'>
-      <button id="messageSend">Send</button><br>
-  </body>
+  </div>  
+    <div class="saying">
+	    <input type = "text" name ='input' placeholder="Say something" onfocus="this.placeholder=''" ><!-- 
+	 --><button id="messageSend">Send</button>
+    </div>
+</body>
 </html>

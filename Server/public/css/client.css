@@ -1,0 +1,146 @@
+html{
+/*  파이어폭스 scrollber */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(101, 190, 230, 0.1) transparent;
+}
+
+/*  웹킷(크롬, 사파리) scrollber */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track-piece {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: rgba(101, 190, 230, 0.1);
+}
+/*  웹킷(크롬, 사파리) button outline 제거 */
+textarea:focus {
+  outline: none; 
+} 
+button:focus {
+  outline: none; 
+}
+input:focus {
+  outline: none; 
+}
+
+/* 공통 영역 */
+body{
+
+  max-width: 768px;
+  margin: 0 auto;
+  background-color: #eee;
+  padding: 1em;
+  box-sizing: border-box;
+}
+
+/* 대화 영역 */
+#box{
+  max-width: calc(768px - 2em);
+  margin: 0 auto;
+  height: 300px;
+}
+#box .chat{
+  wwidth: 100%;
+  padding: 1em;
+  position: relative;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  scrollbar-width: thin;
+  overflow-y: scroll;
+  height: 100%;
+  background-color: #fff;
+}
+
+/* 말풍선 영역 */
+.youMessage{
+  position: absolute;
+  display: block;
+  right: 0;
+  background-color:#41D4BC; 
+  padding: 0.5em;
+  border-radius: 25% 0 25% 25%;
+  color: #fff;
+}
+.botMessage{
+  position: absolute;
+  display: block;
+  left: 0;
+  background-color: #E9E9E9;
+  padding: 0.5em;
+  border-radius: 0 25% 25% 25%;
+  color: #333;
+}
+
+/* 말풍선 영역 */
+.boxMe{
+  display: none;
+  min-width: 1.5em;
+  min-height: 1.5em;
+  
+}
+.boxBot{
+  display: none;
+  min-width: 1.5em;
+  min-height: 1.5em;
+  position: absolute;
+  background-color: #E9E9E9;
+  padding: 0.5em;
+  border-radius: 0 25% 25% 25%;
+  color: #333;
+}
+
+/* 컨트롤 영역 */
+.saying{
+  max-width: calc(768px - 2em);
+  margin: 0 auto;
+  width: 100%;
+  margin-top: 1em; 
+}
+
+/* 입력 영역 */
+.saying input{
+  height: 3.5em;
+  width: calc(100% - 4em);
+  padding: 1em 2em;
+  box-sizing: border-box;
+  border-radius: 3em;
+  border: 1px solid #ddd;
+}
+.saying input::placeholder{
+  color: #aaa;
+}
+
+/* 전송 버튼 영역 */
+.saying #messageSend{
+  width: 3.5em;
+  height: 3.5em;
+  position: relative;
+  background-image: linear-gradient(#6AB3F3, #59E0C1);
+  border: none;
+  border-radius: 50%;
+  margin-left: 0.5em;
+  text-indent: -9999%;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+.saying #messageSend:hover{
+  filter: contrast(1.3);
+}
+.saying #messageSend:active{
+  filter: contrast(0.8);
+  box-shadow: 1px 1px 7px rgba(106, 227, 255, 0.8);
+}
+.saying #messageSend::after{
+  content:"";
+  width: 2em;
+  height: 2em;
+  position: absolute;
+  top: calc(50% - 1em);
+  left: calc(50% - 1em);
+  background-image: url(../img/send.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}

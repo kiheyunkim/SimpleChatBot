@@ -2,14 +2,14 @@ let sendbutton;
 let messages;
 
 window.onload = ()=>{
+    messages = document.getElementById('text')
     sendbutton = document.querySelector('#messageSend');
-    messages = document.querySelector('#chatArea');
 
     sendbutton.addEventListener('click', function(){
         //버튼 id messageSend에 click 등록 및 그에 따른 반응 등록
         let inputArea = document.querySelector('input');
         let inputdata =inputArea.value;
-        messages.value += `<div class = 'youMessage'>You :   ${inputArea.value}"</div><br>`;
+        AddMessage(`<div class = 'youMessage'>You :   ${inputArea.value} </div>`);
         inputArea.value='';
         sendMessage('/simplechatBot', inputdata)
       });
@@ -25,6 +25,10 @@ function sendMessage(url, data){
   
   xhr.addEventListener('load', function(){   // 데이터 수신에 대한 결과 출력
     let result = JSON.parse(xhr.responseText);
-    messages.value += `<div class = 'botMessage'>Bot :  ${result['result']} </div><br>`;
+    AddMessage(`<div class = 'botMessage'> Bot :  ${result['result']} </div>`);
   });
+}
+
+function AddMessage(message){
+  messages.innerHTML += message;
 }
