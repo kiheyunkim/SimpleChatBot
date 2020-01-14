@@ -40,16 +40,15 @@ body{
   max-width: calc(768px - 2em);
   margin: 0 auto;
   height: 300px;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  background-color: #fff;
 }
 #box .chat{
-  wwidth: 100%;
   padding: 1em;
   position: relative;
   box-sizing: border-box;
-  border: 1px solid #e8e8e8;
-  scrollbar-width: thin;
-  overflow-y: scroll;
-  height: 100%;
+ /* border: 1px solid #e8e8e8;*/
   background-color: #fff;
 }
 

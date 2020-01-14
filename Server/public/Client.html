@@ -6,33 +6,13 @@
   <link rel="stylesheet" type="text/css" href="css/client.css">
     <script type="text/javascript" src="chatclient.js"></script>
     <script type="text/javascript" src="jquery-3.4.1.min.js"></script> 
-    <script>
-    //스크롤 생성 시 스크롤이 하단에 고정
-    //참고 주소: http://jsfiddle.net/UAJ7N/
-
-      var i = 0;
-    var max = $("#chatArea").height();
-
-    setInterval(
-      function(){ 
-          i += 1;
-
-          var height = $("#chatArea").height();
-
-          if(height > max) {
-            $("#chatArea").scrollTop(height);
-          }
-
-      },
-    500);
-
-    </script> 
+    
 </head>
 
-<body>
+<body id = 'test'>
   <!-- 대화 박스 -->
   <div id="box">
-    <div id="text" class="chat"></div>
+      <div id="text" class="chat"></div>
   </div>  
    <!-- 입력창 -->
   <div class="saying">
