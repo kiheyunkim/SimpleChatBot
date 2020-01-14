@@ -9,7 +9,7 @@ window.onload = ()=>{
         //버튼 id messageSend에 click 등록 및 그에 따른 반응 등록
         let inputArea = document.querySelector('input');
         let inputdata =inputArea.value;
-        AddMessage(`<div class = 'youMessage'>You :   ${inputArea.value} </div>`);
+        AddMessage(`<div><div class = 'youMessage'>   ${inputArea.value} </div></div>`);
         inputArea.value='';
         sendMessage('/simplechatBot', inputdata)
       });
@@ -25,7 +25,7 @@ function sendMessage(url, data){
   
   xhr.addEventListener('load', function(){   // 데이터 수신에 대한 결과 출력
     let result = JSON.parse(xhr.responseText);
-    AddMessage(`<div class = 'botMessage'> Bot :  ${result['result']} </div>`);
+    AddMessage(`<div><div class = 'botMessage'>  ${result['result']} </div></div>`);
   });
 }
 
