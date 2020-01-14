@@ -1,7 +1,7 @@
 html{
 /*  파이어폭스 scrollber */
   scrollbar-width: thin;
-  scrollbar-color: rgba(101, 190, 230, 0.1) transparent;
+  scrollbar-color: rgba(101, 190, 230, 0.3) transparent;
 }
 
 /*  웹킷(크롬, 사파리) scrollber */
@@ -13,7 +13,7 @@ html{
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 8px;
-  background-color: rgba(101, 190, 230, 0.1);
+  background-color: rgba(101, 190, 230, 0.3);
 }
 /*  웹킷(크롬, 사파리) button outline 제거 */
 textarea:focus {
@@ -28,7 +28,6 @@ input:focus {
 
 /* 공통 영역 */
 body{
-
   max-width: 768px;
   margin: 0 auto;
   background-color: #eee;
@@ -47,7 +46,7 @@ body{
   padding: 1em;
   position: relative;
   box-sizing: border-box;
-  border: 1px solid #ddd;
+  border: 1px solid #e8e8e8;
   scrollbar-width: thin;
   overflow-y: scroll;
   height: 100%;
@@ -55,42 +54,38 @@ body{
 }
 
 /* 말풍선 영역 */
-.youMessage{
-  position: absolute;
-  display: block;
-  right: 0;
-  background-color:#41D4BC; 
-  padding: 0.5em;
-  border-radius: 25% 0 25% 25%;
-  color: #fff;
+/* 공통 영역 */
+#box .chat div{
+  display: flex;
+  width: auto;
 }
+#box .chat div>div{
+  font-size: 0.8em;
+  padding: 0.6em 1em;
+  max-width: 40%;
+  margin: 0.5em 0;
+  word-break: break-word; 
+}
+/* 내 말풍선 */
+#box .chat div:nth-of-type(2n+1){
+  justify-content: flex-end;
+}
+.youMessage{
+  background-color:#41D4BC;
+  border-radius: 0.5em 0 0.5em 0.5em;
+  color: #fff;
+  text-align: right;
+}
+/* 봇 말풍선 */
 .botMessage{
-  position: absolute;
-  display: block;
   left: 0;
+  width: auto;
+  text-align: left;
   background-color: #E9E9E9;
-  padding: 0.5em;
-  border-radius: 0 25% 25% 25%;
+  border-radius: 0 0.5em 0.5em 0.5em;
   color: #333;
 }
 
-/* 말풍선 영역 */
-.boxMe{
-  display: none;
-  min-width: 1.5em;
-  min-height: 1.5em;
-  
-}
-.boxBot{
-  display: none;
-  min-width: 1.5em;
-  min-height: 1.5em;
-  position: absolute;
-  background-color: #E9E9E9;
-  padding: 0.5em;
-  border-radius: 0 25% 25% 25%;
-  color: #333;
-}
 
 /* 컨트롤 영역 */
 .saying{
@@ -99,7 +94,6 @@ body{
   width: 100%;
   margin-top: 1em; 
 }
-
 /* 입력 영역 */
 .saying input{
   height: 3.5em;
@@ -112,7 +106,6 @@ body{
 .saying input::placeholder{
   color: #aaa;
 }
-
 /* 전송 버튼 영역 */
 .saying #messageSend{
   width: 3.5em;
