@@ -1,9 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
-const app = express();
+
+//외부 스크립트
 const router = require('./router/router');
 
+const app = express();
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
@@ -21,10 +23,8 @@ app.use(helmet.contentSecurityPolicy({
     }
   }))
 
-  console.log(router.routerPost);
-  console.log(router.routerGet);
 app.listen("8080",()=>{
-    console.log("Start Start at 8080");
+    console.log("Start Chatbot at 8080");
 });
 
 app.get('/*',(request,response)=>{
@@ -37,7 +37,6 @@ app.get('/*',(request,response)=>{
     }else{
         response.send('<h1> HTTP 404 Forbidden</h1>');
     }
-    //라우터 처리를 request.url을통해서
 });
 
 app.post('/*',(request,response)=>{
@@ -53,3 +52,6 @@ app.post('/*',(request,response)=>{
     }
 })
 
+function ErrorProcessing(request,response){
+    
+}

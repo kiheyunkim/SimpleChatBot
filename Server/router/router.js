@@ -1,9 +1,8 @@
+const sql = require('./sql');
 
-function Router(){
-    
-}
 const desision = 
 {
+    'help': "'$add,질문,답변' 형식으로 질문을 등록하세요! 원하는 질문을 입력해보세요",
     'hi' : '안녕하세요',
     '안녕': '나도 안녕',
     '반갑습니다':'저도 반가워요',
@@ -14,10 +13,19 @@ const desision =
 
 //Post Processing
 let MessageProcess = (request,response)=>{
-    var responseData = {
-        'result' : desision[request.body.message] != undefined ? desision[request.body.message] : "올바르지 않은 요청입니다."
-    };
-    response.json(responseData);     // 서버에서는 JSON.stringify 필요없음
+    let requestMessage = request.body.message;
+    if(requestMessage.charAt(0) == '$'){ //Command 인식
+        if(requestMessage.substr(1,3) == 'add'){//추가 명령
+            requestMessage.trim();
+            let splits = requestMessage.split(',');
+            sql.RegisterResponse(splits[1],splits[2],response);
+        }else{
+            
+        }
+
+    }else{
+        sql.GetResponse(request.body.message,response);
+    }
 }
 
 //Get Processing
@@ -37,6 +45,11 @@ const routerGet ={
     '/':frontProcess,
     '/chat':directConnect
 };
+
+function ErrorHandling(response){
+    resp    
+}
+
 
 exports.routerGet = routerGet;
 exports.routerPost= routerPost;
