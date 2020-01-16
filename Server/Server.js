@@ -30,20 +30,22 @@ app.get('/*',(request,response)=>{
     if(router.routerGet!=undefined){
         if(router.routerGet[request.url] !=undefined){
             router.routerGet[request.url](request,response);
+            return;
         }
     }
     
-    ErrorHandling(requiest,response,'invalid Get Access');
+    ErrorHandling(request,response,'invalid Get Access');
 });
 
 app.post('/*',(request,response)=>{
     if(router.routerPost!=undefined){
         if(router.routerPost[request.url] !=undefined){
             router.routerPost[request.url](request,response);
+            return;
         }
     }
 
-    ErrorHandling(requiest,response,'invalid Post Access');
+    ErrorHandling(request,response,'invalid Post Access');
 })
 
 function ErrorHandling(request,response,state){
