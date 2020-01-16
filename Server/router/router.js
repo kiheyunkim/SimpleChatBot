@@ -6,7 +6,12 @@ let MessageProcess = (request,response)=>{
     if(requestMessage.charAt(0) == '$'){            //Command 인식
         if(requestMessage.substr(1,3) == 'add'){    //추가 명령
             requestMessage.trim();
-            let splits = requestMessage.split(',');
+            let splits = requestMessage.split(',');//쪼갯을때 3개가 아니면잘못된 형식
+            if(splits.length != 3){
+                ErrorHandling(request,response,'add command form invalid');
+                return;
+            }
+
             sql.RegisterResponse(splits[1],splits[2],response);
         }else{
             ErrorHandling(request,response,'InvalidCommand request');
@@ -26,7 +31,7 @@ const routerPost ={
 };
 const routerGet ={
     '/':moveToChat,
-    '/chat':moveToChat
+    '/chat':moveToChat  
 };
 
 function ErrorHandling(request,response,state){

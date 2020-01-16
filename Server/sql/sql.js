@@ -1,10 +1,22 @@
 const mysql = require('mysql');
-const connection = mysql.createConnection({
+
+const connectionValue={
     host:'localhost',
     user:'root',
     password: 'toor',
     database : 'Messages'
+}
+
+let connection = mysql.createConnection(connectionValue);
+
+//db 연결이 끊어졌을 때 db 연결에 대해서 복구하기 위한 부분.
+connection.on('err',(err)=>{
+    console.log('Database connection Error');
+    if(err.code == 'PROTOCOL_CONNECTION_LOST'){
+        connection = mysql.createConnection(connectionValue);
+    }
 });
+
 
 //조회용 promise 함수
 function GetResponse(request,sending){
