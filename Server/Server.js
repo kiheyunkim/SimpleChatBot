@@ -13,7 +13,6 @@ app.use(bodyParser.json())
 //use static files
 app.use(express.static('public'));
 
-
 app.use(helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self'"],
@@ -31,27 +30,23 @@ app.get('/*',(request,response)=>{
     if(router.routerGet!=undefined){
         if(router.routerGet[request.url] !=undefined){
             router.routerGet[request.url](request,response);
-        }else{
-            console.log(request.url);
         }
-    }else{
-        response.send('<h1> HTTP 404 Forbidden</h1>');
     }
+    
+    ErrorHandling(requiest,response,'invalid Get Access');
 });
 
 app.post('/*',(request,response)=>{
-    console.log(request.url);
     if(router.routerPost!=undefined){
         if(router.routerPost[request.url] !=undefined){
             router.routerPost[request.url](request,response);
-        }else{
-            console.log(request.url);
         }
-    }else{
-        response.send('<h1> HTTP 404 Forbidden</h1>');
     }
+
+    ErrorHandling(requiest,response,'invalid Post Access');
 })
 
-function ErrorProcessing(request,response){
-    
+function ErrorHandling(request,response,state){
+    console.log("Error Occured :" + state + "url: " + request.url);
+    response.send('<html><body><h1> HTTP 404 Forbidden</h1></body></html>')
 }

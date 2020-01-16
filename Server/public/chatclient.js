@@ -1,13 +1,11 @@
 let sendbutton;
 let messages;
-let caret;
 let max;
 
 window.onload = ()=>{
     max = $("#box").height();
     messages = document.getElementById('text')
     sendbutton = document.querySelector('#messageSend');
-    caret = document.getElementsByClassName('chat')
 
     sendbutton.addEventListener('click', function(){
         //버튼 id messageSend에 click 등록 및 그에 따른 반응 등록
@@ -35,14 +33,14 @@ function sendMessage(url, data){
 }
 
 function AddMessage(message){
-  var newDiv = document.createElement('div');
+  let newDiv = document.createElement('div');
   newDiv.innerHTML = message;
   messages.appendChild(newDiv);
   adjustCaretPoint();
 }
 
 function adjustCaretPoint(){
-      var height = $("#text").height();
+      let height = $("#text").height();
       if(height > max) {
           $("#box").scrollTop(height);
       }

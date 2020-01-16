@@ -6,29 +6,31 @@ const connection = mysql.createConnection({
     database : 'Messages'
 });
 
+//조회용 promise 함수
 function GetResponse(request,sending){
-     return new Promise(function(resolve){  //끝난 다는 것을 보장한다.
+     return new Promise((resolve)=>{
         connection.query('SELECT * FROM `message` WHERE `request` = ?',[request],(error, results, fields)=>{
             if(error)
                 throw error;
 
-            var responseData = {
+            let responseData = {
                   'result' :""
             }
             
             responseData['result'] = results.length==0 ? '올바르지 않은 값입니다' : results[0]['response'];
-            sending.json(responseData);    //결과값 전달해줌
+            sending.json(responseData);
         })
     })
 }
-     
+
+//등록용 promise 함수
 function RegisterResponse(request, response, sending){
-    return new Promise(function(resolve){
+    return new Promise((resolve)=>{
         connection.query('insert `message` value(?,?)',[request,response],(error,results,fields)=>{
             if(error)
                 throw error;
 
-            var responseData = {
+            let responseData = {
                 'result' :""
             }
 
