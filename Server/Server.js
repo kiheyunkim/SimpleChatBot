@@ -11,8 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 //use static files
-app.use(express.static('public'));
-
+app.use(express.static(__dirname+'/public'));
 app.use(helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self'"],
@@ -49,6 +48,6 @@ app.post('/*',(request,response)=>{
 })
 
 function ErrorHandling(request,response,state){
-    console.log("Error Occured :" + state + "url: " + request.url);
+    console.log("Error Occured :" + state + " url: " + request.url);
     response.send('<html><body><h1> HTTP 404 Forbidden</h1></body></html>')
 }

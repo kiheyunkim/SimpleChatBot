@@ -52,5 +52,11 @@ function RegisterResponse(request, response, sending){
     })
 }
 
+function ErrorResponse(request,response){
+    let responseData ={'result':'Invalid Command Form'};
+    response.json(responseData);
+}
+
+exports.ErrorResponse = ErrorResponse;
 exports.GetResponse = GetResponse;
 exports.RegisterResponse= RegisterResponse;

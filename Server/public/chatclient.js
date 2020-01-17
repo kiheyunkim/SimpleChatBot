@@ -13,13 +13,13 @@ window.onload = ()=>{
         let inputdata =inputArea.value;
         AddMessage(`<div class = 'youMessage'>   ${inputArea.value} </div>`);
         inputArea.value='';
-        sendMessage('/simplechatBot', inputdata)
+        sendMessage('/simplechatBot', inputdata);
       });
 }
 
 function sendMessage(url, data){
   let jsonData = JSON.stringify({'message':data});  //Json 변환
-
+  
   let xhr = new XMLHttpRequest();
   xhr.open('POST', url);
   xhr.setRequestHeader('Content-type', "application/json");  // content-type을 설정하고 데이터 송신
@@ -27,6 +27,7 @@ function sendMessage(url, data){
   
   xhr.addEventListener('load', function(){   // 데이터 수신에 대한 결과 출력
     let result = JSON.parse(xhr.responseText);
+    console.log(xhr);
     AddMessage(`<div class = 'botMessage'>  ${result['result']} </div>`);
   });
 
