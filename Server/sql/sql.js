@@ -30,10 +30,10 @@ connection.on('err',(err)=>{
 
 //조회용 promise 함수
 async function GetResponse(request,sending){
-     return new Promise((resolve)=>
+     return new Promise((resolve,reject)=>
         connection.query('SELECT * FROM `message` WHERE `request` = ?',[request],(error, results, fields)=>{
             if(error)
-                throw error;
+                reject(error);
 
             let responseData = {
                   'result' :""
@@ -49,10 +49,10 @@ async function GetResponse(request,sending){
 
 //등록용 promise 함수
 function RegisterResponse(request, response, sending){
-    return new Promise((resolve)=>{
+    return new Promise((resolve,reject)=>{
         connection.query('insert `message` value(?,?)',[request,response],(error,results,fields)=>{
             if(error)
-                throw error;
+                reject(error);
 
             let responseData = {
                 'result' :""
