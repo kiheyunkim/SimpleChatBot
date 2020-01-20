@@ -14,7 +14,7 @@ let keepAliveInterval = setInterval(()=>{
         if(error)
             throw error;
 
-        console.log('Keep alive query Sending');
+        //console.log('Keep alive query Sending');
     })
 },50000);
 
