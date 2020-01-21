@@ -13,8 +13,6 @@ let keepAliveInterval = setInterval(()=>{
     connection.query('select 1',(error,results,fields)=>{
         if(error)
             throw error;
-
-        //console.log('Keep alive query Sending');
     })
 },50000);
 
@@ -24,6 +22,9 @@ connection.on('err',(err)=>{
     if(err.code === 'PROTOCOL_CONNECTION_LOST'){
         clearInterval(keepAliveInterval);
         connection = mysql.createConnection(connectionValue);
+        keepAliveInterval();
+    }else if(err.code === 'ECONNREFUSED'){
+        
     }
 });
 
@@ -32,8 +33,11 @@ connection.on('err',(err)=>{
 async function GetResponse(request,sending){
      return new Promise((resolve,reject)=>
         connection.query('SELECT * FROM `message` WHERE `request` = ?',[request],(error, results, fields)=>{
-            if(error)
+            if(error){
+                DBErrorResponse(sending);
                 reject(error);
+                return;
+            }
 
             let responseData = {
                   'result' :""
@@ -41,18 +45,18 @@ async function GetResponse(request,sending){
             responseData['result'] = results.length==0 ? "등록되지 않은 질문입니다. 질문을 등록하려면 '$add,질문,답변' 형식으로 전송해주세요!" : results[0]['response'];
             sending.json(responseData);
             resolve('ok');
-        }),
-    (reject)=>{
-      reject('error');  
-    });
+        }));
 }
 
 //등록용 promise 함수
 function RegisterResponse(request, response, sending){
     return new Promise((resolve,reject)=>{
         connection.query('insert `message` value(?,?)',[request,response],(error,results,fields)=>{
-            if(error)
+            if(error){
+                DBErrorResponse(sending);
                 reject(error);
+                return;
+            }
 
             let responseData = {
                 'result' :""
@@ -62,14 +66,16 @@ function RegisterResponse(request, response, sending){
             sending.json(responseData); 
             resolve('ok');
         })
-    },
-    (reject)=>{
-      reject('error');  
     });
 }
 
 function ErrorResponse(request,response){
     let responseData ={'result':'Invalid Command Form'};
+    response.json(responseData);
+}
+
+function DBErrorResponse(response){
+    let responseData ={'result':'DB Server Down'};
     response.json(responseData);
 }
 

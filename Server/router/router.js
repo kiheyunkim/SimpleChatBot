@@ -37,7 +37,6 @@ const routerGet ={
 function ErrorHandling(request,response,state){
     console.log("Router Error Occured :" + state + "url: " + request.url);
     sql.ErrorResponse(request,response);
-    //response.send('<html><body><h1> HTTP 404 Forbidden</h1></body></html>')
 }
 
 exports.routerGet = routerGet;
