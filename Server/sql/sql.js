@@ -28,7 +28,6 @@ connection.on('err',(err)=>{
     }
 });
 
-
 //조회용 promise 함수
 async function GetResponse(request,sending){
      return new Promise((resolve,reject)=>

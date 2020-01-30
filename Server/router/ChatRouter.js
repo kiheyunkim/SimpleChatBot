@@ -1,7 +1,7 @@
+const ChatRouter = require('express').Router();
 const sql = require('../sql/sql');
 
-//Post Processing
-let MessageProcess = (request,response)=>{
+ChatRouter.post('/',(request,response)=>{
     let requestMessage = request.body.message;
     if(requestMessage.charAt(0) == '$'){            //Command 인식
         if(requestMessage.substr(1,3) == 'add'){    //추가 명령
@@ -11,7 +11,6 @@ let MessageProcess = (request,response)=>{
                 ErrorHandling(request,response,'add command form invalid');
                 return;
             }
-
             sql.RegisterResponse(splits[1],splits[2],response);
         }else{
             ErrorHandling(request,response,'InvalidCommand request');
@@ -19,25 +18,11 @@ let MessageProcess = (request,response)=>{
     }else{      //질의 요청
         sql.GetResponse(request.body.message,response);
     }
-}
+})
 
-//Get Processing
-let moveToChat = (request,response)=>{
-    response.redirect('Client.html');
-}
-
-const routerPost ={
-    '/simplechatBot':MessageProcess,
-};
-const routerGet ={
-    '/':moveToChat,
-    '/chat':moveToChat  
-};
-
-function ErrorHandling(request,response,state){
+ErrorHandling = (request,response,state) =>{
     console.log("Router Error Occured :" + state + "url: " + request.url);
     sql.ErrorResponse(request,response);
 }
 
-exports.routerGet = routerGet;
-exports.routerPost= routerPost;
+module.exports = ChatRouter;
