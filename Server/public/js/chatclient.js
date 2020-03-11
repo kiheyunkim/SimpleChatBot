@@ -51,7 +51,8 @@ $(document).ready(()=>{
       });
 
       $(document).keyup((event)=>{
-        if(event.keyCode === '13'){
+       console.log(event.keyCode);
+        if(event.keyCode === 13){
           let inputArea = document.querySelector('input');
           $(inputArea).focus();
           $(sendbutton).click();
