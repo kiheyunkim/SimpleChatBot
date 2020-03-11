@@ -66,7 +66,7 @@ body{
   word-break: break-word; 
 }
 /* 내 말풍선 */
-#box .chat div:nth-of-type(2n+1){
+#you{
   justify-content: flex-end;
 }
 .youMessage{
@@ -74,6 +74,7 @@ body{
   border-radius: 0.5em 0 0.5em 0.5em;
   color: #fff;
   text-align: right;
+  
 }
 /* 봇 말풍선 */
 .botMessage{
