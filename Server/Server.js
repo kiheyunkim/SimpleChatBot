@@ -25,6 +25,6 @@ app.use(helmet.contentSecurityPolicy({
 app.use('/',CommonRouter);
 app.use('/simplechatBot',ChatRouter);
 
-app.listen("8080",()=>{
-    console.log("Start Chatbot at 8080");
+app.listen("3002",()=>{
+    console.log("Start Chatbot at 3002");
 });

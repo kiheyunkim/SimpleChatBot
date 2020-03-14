@@ -1,6 +1,6 @@
-create Datebase Messages;
+create DATABASE messages;
 
-use Messages;
+use messages;
 
 create Table message(
     request varchar(50) not null primary key,
