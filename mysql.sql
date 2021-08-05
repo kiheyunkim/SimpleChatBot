@@ -1,8 +1,7 @@
-create DATABASE messages;
+CREATE DATABASE IF NOT EXISTS CHATBOT;
+USE CHATBOT;
 
-use messages;
-
-create Table message(
-    request varchar(50) not null primary key,
+CREATE TABLE IF NOT EXISTS MESSAGE(
+    request varchar(50) not null,
     response varchar(50) not null
 );
