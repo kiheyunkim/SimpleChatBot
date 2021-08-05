@@ -1,11 +1,11 @@
 const commonRouter = require('express').Router();
 
 commonRouter.get('/', (request, response) => {
-	response.redirect('Client.html');
+	response.redirect('client.html');
 });
 
 commonRouter.get('/chat', (request, response) => {
-	response.redirect('Client.html');
+	response.redirect('client.html');
 });
 
 module.exports = commonRouter;
