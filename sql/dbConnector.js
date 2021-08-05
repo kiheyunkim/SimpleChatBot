@@ -23,14 +23,14 @@ let selectResponse = async (request) => {
 				return;
 			}
 
-			resolve(results[0]['response'])
+			resolve(results[results.length - 1]['response'])
 		});
 	});
 };
 
 let registerResponse = async (request, response) => {
 	return new Promise(((resolve, reject) => {
-		dbConnection.query('INSERT MESSAGE VALUE(?, ?)'), [request, response], (error, results, fields) => {
+		dbConnection.query(`INSERT INTO MESSAGE (request,response) VALUES('${request}','${response}')`, (error, results, fields) => {
 			if (error) {
 				reject('error occurred');
 				return;
@@ -43,7 +43,7 @@ let registerResponse = async (request, response) => {
 			}
 
 			resolve('등록되었습니다');
-		}
+		})
 	}));
 }
 

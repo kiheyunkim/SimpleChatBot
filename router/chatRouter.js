@@ -14,7 +14,6 @@ chatRouter.post('/', (request, response) => {
 					console.log('insert response Error');
 					response.json(makeResponse(result));
 				});
-
 				return;
 			}
 		}
