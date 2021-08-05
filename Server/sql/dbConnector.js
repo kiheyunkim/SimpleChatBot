@@ -31,8 +31,10 @@ let selectResponse = async (request) => {
 let registerResponse = async (request, response) => {
 	return new Promise(((resolve, reject) => {
 		dbConnection.query('INSERT MESSAGE VALUE(?, ?)'), [request, response], (error, results, fields) => {
-			reject('error occurred');
-			return;
+			if (error) {
+				reject('error occurred');
+				return;
+			}
 
 			let affectRowsCount = results['affectedRows'];
 			if (affectRowsCount === 0) {
