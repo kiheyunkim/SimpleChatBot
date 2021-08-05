@@ -12,7 +12,7 @@ let dbConnection = mysql.createConnection(dbProperties);
 
 let selectResponse = async (request) => {
 	return new Promise((resolve, reject) => {
-		dbConnection.query('SELECT * FROM MESSAGE WHERE request = ?', [request], (error, results, fields) => {
+		dbConnection.query("SELECT * FROM MESSAGE WHERE request = ?", [request], (error, results, fields) => {
 			if (error) {
 				reject('error occurred');
 				return;
