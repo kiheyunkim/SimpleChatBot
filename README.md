@@ -59,6 +59,7 @@ CREATE TABLE IF NOT EXISTS MESSAGE(
     response varchar(50) not null
 );
 
+ALTER TABLE MESSAGE ADD UNIQUE (request);
 ```
 
 
@@ -66,7 +67,7 @@ CREATE TABLE IF NOT EXISTS MESSAGE(
 
 ## known issue
 
-답변이 여러개 등록되나 가장 마지막에 등록된 답변만을 돌려줌..
+없음
 
 ---
 

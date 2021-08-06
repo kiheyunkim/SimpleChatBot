@@ -30,7 +30,7 @@ let selectResponse = async (request) => {
 
 let registerResponse = async (request, response) => {
 	return new Promise(((resolve, reject) => {
-		dbConnection.query(`INSERT INTO MESSAGE (request,response) VALUES('${request}','${response}')`, (error, results, fields) => {
+		dbConnection.query(`INSERT INTO MESSAGE (request,response) VALUES('${request}','${response}') ON DUPLICATE KEY UPDATE request='${request}', response='${response}'`, (error, results, fields) => {
 			if (error) {
 				reject('error occurred');
 				return;
