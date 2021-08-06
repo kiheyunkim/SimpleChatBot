@@ -36,7 +36,7 @@ programming: [김기현](https://github.com/kiheyunkim)
 
 ## feature
 
-> 1. $add,{질문내용},{대답내용}을 통해 등록
+> 1. $add,{질문내용},{대답내용}을 통해 등록 - Upsert를 통해서 중복 등록이 되지 않도록 함.
 
 > 2. 질문내용을 치면 해당 내용에 대한 저장된 답변을 돌려줌.
 
