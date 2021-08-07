@@ -12,12 +12,20 @@
 <body id = 'test'>
   <!-- 대화 박스 -->
   <div id="box">
-      <div id="text" class="chat"></div>
+      <div id="text" class="chat">
+        <div>
+          <p class="botLabel">너무해</p>
+          <div class = 'botMessage'>SimpleChatBot을 사용해주셔서 감사합니다. <br>해당 파일 사용 전 README.md 파일 숙지 후 사용하시는 것을 권장드립니다.<br>※ 이 메세지는 전달용으로 추가한 것으로, client.html 파일을 통해 삭제·수정이 가능합니다.<br>※ 하단의 저작권 표시 태그는 삭제하지 마시길 바랍니다.</div>
+        </div>
+        <!-- <div class = 'youMessage'>${inputArea.value}</div> -->
+        <!-- <div class = 'botMessage'>${result.response}</div> -->
+      </div>
   </div>  
    <!-- 입력창 -->
   <div class="saying">
     <input type = "text" name ='input' placeholder="Say something" onfocus="this.placeholder=''" ><!-- 
    --><button id="messageSend">Send</button>
   </div>
+  <p id="copyright">ⓒ 2021. kiheyunkim & Songeun Choi all rights reserved.</p>
 </body>
 </html>

@@ -57,26 +57,46 @@ body{
 #box .chat div{
   display: flex;
   width: auto;
+  flex-direction: column;
 }
 #box .chat div>div{
   font-size: 0.8em;
   padding: 0.6em 1em;
   max-width: 40%;
   margin: 0.5em 0;
-  word-break: break-word; 
+  word-break: break-word;
+  animation: msgBox 0.2s ease-in;
+}
+@keyframes msgBox{
+  0%{
+    transform: translateY(0px);
+  }
+  20%{
+    transform: translateY(-2px);
+  }
+  100%{
+    transform: translateY(0px);
+  }
 }
 /* 내 말풍선 */
 #you{
   justify-content: flex-end;
+  flex-direction: initial !important;
 }
 .youMessage{
   background-color:#41D4BC;
   border-radius: 0.5em 0 0.5em 0.5em;
   color: #fff;
   text-align: right;
-  
 }
 /* 봇 말풍선 */
+.botLabel{
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 2px;
+  max-width: 40%;
+}
 .botMessage{
   left: 0;
   width: auto;
@@ -136,4 +156,9 @@ body{
   background-image: url(../img/send.png);
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+/* 저작권은 kiheyunkim과 Songeun Choi에게 있습니다. */
+#copyright{
+  display: none;
 }
