@@ -57,6 +57,7 @@ body{
 #box .chat div{
   display: flex;
   width: auto;
+  flex-direction: column;
 }
 #box .chat div>div{
   font-size: 0.8em;
@@ -80,15 +81,22 @@ body{
 /* 내 말풍선 */
 #you{
   justify-content: flex-end;
+  flex-direction: initial !important;
 }
 .youMessage{
   background-color:#41D4BC;
   border-radius: 0.5em 0 0.5em 0.5em;
   color: #fff;
   text-align: right;
-  
 }
 /* 봇 말풍선 */
+.botLabel{
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 2px;
+  max-width: 40%;
+}
 .botMessage{
   left: 0;
   width: auto;
