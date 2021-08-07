@@ -63,7 +63,19 @@ body{
   padding: 0.6em 1em;
   max-width: 40%;
   margin: 0.5em 0;
-  word-break: break-word; 
+  word-break: break-word;
+  animation: msgBox 0.2s ease-in;
+}
+@keyframes msgBox{
+  0%{
+    transform: translateY(0px);
+  }
+  20%{
+    transform: translateY(-2px);
+  }
+  100%{
+    transform: translateY(0px);
+  }
 }
 /* 내 말풍선 */
 #you{
@@ -136,4 +148,9 @@ body{
   background-image: url(../img/send.png);
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+/* 저작권은 kiheyunkim과 Songeun Choi에게 있습니다. */
+#copyright{
+  display: none;
 }
